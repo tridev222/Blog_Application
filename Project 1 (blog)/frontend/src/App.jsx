@@ -9,7 +9,7 @@ import {
 import Registration from "./pages/Registration";
 import HomePage from "./pages/HomePage";
 import Login from "./pages/Login";
-import CreatePost from "./pages/CreatePost";
+import CreatePost from "./pages/CreatePost"; //createPost
 
 const PrivateRoute = ({ authenticated }) => {
   return authenticated ? <Outlet /> : <Navigate replace to="/login" />;
