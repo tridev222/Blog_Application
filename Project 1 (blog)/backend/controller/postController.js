@@ -1,13 +1,14 @@
 const Post = require("../models/blogSchema");
-
+const Blog =require("../models/blogSchema");
 //create a post
 const createPost = async (req,res) => {
-  const { title, content} = req.body;
+  const { title, content , email} = req.body;
   const imageUrl = req.file ? `/uploads/${req.file.filename}` : null;
   const Newpost = new Post({
     title,
     content,
     imageUrl,
+    email
   });
   try {
     if (!title || !content || !imageUrl ) {
@@ -31,10 +32,19 @@ const getAllPost = async(req,res)=>{
 }
 
 //get A single Post
-const getPost= async(req, res) => {
-  const post = await Post.findById(req.params.id);
-  res.json(post);
+const getPost = async (req, res) => {
+  try {
+    const post = await Blog.findById(req.params.id);
+    if (!post) {
+      return res.status(404).json({ message: "Blog post not found" });
+    }
+    res.status(200).json({ blog: post });
+  } catch (error) {
+    console.error("Error fetching the post:", error);
+    res.status(500).json({ message: "Internal Server Error", error: error.message });
+  }
 };
 
 
-module.exports = { createPost , getAllPost , getPost};
+
+module.exports = { createPost , getAllPost , getPost };

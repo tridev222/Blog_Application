@@ -16,6 +16,9 @@ const blogSchema = new Schema({
     type: String,
     required: true,
   },
+  email: {
+    type: String,
+  },
   createdAt: {
     type: Date,
     default: Date.now, // Corrected here

@@ -10,8 +10,8 @@ function NavBar() {
         <Link
           to="/"
           sx={{
-            textDecoration: 'underline', 
-            color: 'blue',               
+            textDecoration: 'none', 
+            color: 'inherit',               
             display: 'inline-block',
             '&:hover': {
               color: 'darkblue',          
@@ -24,8 +24,8 @@ function NavBar() {
         <Link
           to="/aboutus"
           sx={{
-            textDecoration: 'underline',
-            color: 'blue',
+            textDecoration: 'none', 
+            color: 'inherit',
             display: 'inline-block',
             '&:hover': {
               color: 'darkblue',
@@ -38,8 +38,8 @@ function NavBar() {
         <Link
           to="/contactus"
           sx={{
-            textDecoration: 'underline',
-            color: 'blue',
+            textDecoration: 'none', 
+            color: 'inherit',
             display: 'inline-block',
             '&:hover': {
               color: 'darkblue',
@@ -52,8 +52,8 @@ function NavBar() {
         <Link
           to="/login"
           sx={{
-            textDecoration: 'underline',
-            color: 'blue',
+            textDecoration: 'none', 
+            color: 'inherit',
             display: 'inline-block',
             '&:hover': {
               color: 'darkblue',

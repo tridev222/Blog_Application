@@ -7,21 +7,28 @@ import Typography from "@mui/material/Typography";
 import { Button, Box, IconButton } from "@mui/material";
 import Like from "./Like";
 import CommentIcon from "@mui/icons-material/Comment"; // Comment icon from MUI
+import { useNavigate } from "react-router-dom";
 
 export default function BlogCards({ blog }) {
+  const Navigate = useNavigate();
   const imageUrl = blog.imageUrl;
   const imageSrc = imageUrl ? `http://localhost:3000${imageUrl}` : null;
 
+  const handleCommentClick = (id) => {
+    Navigate(`/homepage/comment/${id}`); 
+  };
+
+
   return (
-    <Card sx={{ width: "100%", height: "100%", alignContent: "center", textAlign: "center" }}> {/* Full width and height for card */}
+    <Card sx={{ width: "100%", height: "100%", alignContent: "center", textAlign: "center" }}>
       {imageSrc && (
         <CardMedia
           sx={{
-            width: 400, // Set width of image (small size)
-            height: 150, // Set height of image
-            objectFit: "cover", // Maintain image aspect ratio
-            margin: "0 auto", // Center the image horizontally
-            boxShadow: "5px 2px 5px 2px rgb(0 0 0/ 0.6)", // Add shadow to the image
+            width: 400, 
+            height: 150, 
+            objectFit: "cover",
+            margin: "0 auto", 
+            boxShadow: "5px 2px 5px 2px rgb(0 0 0/ 0.6)", 
           }}
           image={imageSrc}
           title={blog.title}
@@ -31,8 +38,11 @@ export default function BlogCards({ blog }) {
         <Typography gutterBottom variant="h5" component="div">
           {blog.title}
         </Typography>
+        <Typography variant="body1" sx={{ color: "text.secondary" }}>
+        by-:{" "+blog.email}
+        </Typography>
         <Typography variant="body2" sx={{ color: "text.secondary" }}>
-          {blog.content}
+        {blog.content}
         </Typography>
       </CardContent>
       <CardActions sx={{ display: "flex", justifyContent: "space-between", width: "100%" }}>
@@ -42,6 +52,7 @@ export default function BlogCards({ blog }) {
             variant="contained"
             startIcon={<CommentIcon />}
             sx={{ textTransform: "none" }}
+            onClick={()=>handleCommentClick(blog._id)}
           />
         </Box>
       </CardActions>

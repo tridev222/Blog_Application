@@ -1,22 +1,30 @@
+import React, { useState , useContext} from "react";
 import { Box, TextField, Typography, Button ,FormControl} from "@mui/material";
-import React, { useState } from "react";
 import axios from "axios"; // For handling the API request
 import { useNavigate } from "react-router-dom";
 import AlertSuccess from "../components/AlertSuccess";
 import NavBar from "../components/NavBar";
 import Banner from "../components/Banner";
 import AddImageIcon from "../components/AddImageIcon";
+import { DataContext } from "../context/DataProvider"
+
 
 const CreatePost = () => {
+
   const navigate = useNavigate();
   const [post, setPost] = useState({
     title: "",
     content: "",
     imageUrl: null,
+    email:''
   });
 
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
+
+  const { account }= useContext(DataContext)
+
+  console.log(account);
 
   const handleCreateClick = async () => {
     if (!post.title || !post.content) {
@@ -26,9 +34,11 @@ const CreatePost = () => {
     const formData = new FormData();
     formData.append("title", post.title);
     formData.append("content", post.content);
+    formData.append("email",account.email);
     if (post.imageUrl) {
       formData.append("image", post.imageUrl);
     } 
+
     try {
       const response = await axios.post(
         "http://localhost:3000/api/user/create/post",
@@ -66,7 +76,7 @@ const CreatePost = () => {
     if (file) {
       setPost((prev) => ({
         ...prev,
-        imageUrl: file, // Store the selected file here
+        imageUrl: file, 
       }));
     }
   };
