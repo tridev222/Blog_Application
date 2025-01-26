@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, {useState, useEffect } from "react";
 import axios from "axios";
 import {
   Box,
@@ -16,10 +16,10 @@ const DashBoard = () => {
 
   const[userData,setUserData]=useState('');
 
-useEffect(async()=>{
-  const response = await axios.get(`http://localhost:3000/api/user/getDeatail/${id}`)
-  setUserData(response.data);
-},[])
+// useEffect(async()=>{
+//   const response = await axios.get(`http://localhost:3000/api/user/getDeatail/${id}`)
+//   setUserData(response.data);
+// },[])
 
   return (
     <div>
@@ -56,7 +56,7 @@ useEffect(async()=>{
 
           {/* Edit Profile Button */}
           <Box sx={{ textAlign: "center", mt: 4 }}>
-            <Link to="/editprofile">
+            <Link to="/homepage/edit-user-profile">
               <Button
                 variant="contained"
                 color="primary"

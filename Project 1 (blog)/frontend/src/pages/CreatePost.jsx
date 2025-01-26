@@ -1,5 +1,5 @@
 import React, { useState , useContext} from "react";
-import { Box, TextField, Typography, Button ,FormControl} from "@mui/material";
+import { Box, TextField, Typography, Button ,FormControl,Container} from "@mui/material";
 import axios from "axios"; // For handling the API request
 import { useNavigate } from "react-router-dom";
 import AlertSuccess from "../components/AlertSuccess";
@@ -85,6 +85,7 @@ const CreatePost = () => {
     <div>
       <NavBar />
       <Banner />
+      <Container maxWidth="xl"  sx={{ boxShadow: 3, mt: 2 ,  marginBottom:"10px"}}>
       <Box
         sx={{
           display: "flex",
@@ -197,6 +198,7 @@ const CreatePost = () => {
       >
         {success && <AlertSuccess />}
       </Box>
+      </Container>
     </div>
   );
 };
