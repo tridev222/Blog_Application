@@ -21,11 +21,9 @@ const Login = ({setAuthentication}) => {
         "http://localhost:3000/api/user/login",
         signinDetail
       );
-
-      console.log(response);
       if (response.status === 200) {
-        sessionStorage.setItem('accessToken',`Bearer${response.data.accessToken}`);
-        sessionStorage.setItem('refreshToken',`Bearer${response.data.refreshToken}`);
+        sessionStorage.setItem('accessToken',`Bearer${response.data.ACCESS_TOKEN_SECRET}`);
+        sessionStorage.setItem('refreshToken',`Bearer${response.data.REFRESH_TOKEN_SECRET}`);
         
         setAccount({email:response.data.email,name:response.data.name});
         setAuthentication(true);

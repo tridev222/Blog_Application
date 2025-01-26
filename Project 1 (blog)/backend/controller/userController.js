@@ -55,7 +55,7 @@ const userLogin = async (req, res) => {
     }
     const accessToken = generateAccessToken.generateAccessToken(User);
 
-     res.status(200).jsonn({
+     res.status(200).json({
       status: "success",
       message: "logged in succesfully",
       data: {
@@ -70,6 +70,22 @@ const userLogin = async (req, res) => {
     return res.status(500).json({ message: `Server error: ${error.message}` });
   }
 };
+
+//Get User Details
+const userDetail = async (req, res)=>{
+  const { id }=req.params.id;
+  try{
+    const user = await User.findById(id);
+    if(!user){
+      return res.statue(404).json({message:"user not found"});
+    }
+    res.status(200).json(user)
+  }
+  catch(error) {
+    console.error("Error fetching the user:", error);
+    res.status(500).json({ message: "Internal Server Error", error: error.message });
+  }
+}
 
 // Logout user
 const userLogout = async (req, res ) => {
@@ -103,4 +119,4 @@ const userLogout = async (req, res ) => {
 
   };
 
-module.exports = { userRegister, userLogin, userLogout };
+module.exports = { userRegister, userLogin,userDetail,userLogout };

@@ -13,6 +13,7 @@ import CreatePost from "./pages/CreatePost"; //createPost
 import AboutUs from "./pages/AboutUs";
 import ContactUs from "./pages/ContactUs";
 import CommentPage from "./pages/CommentPage";
+import EditProfilePage from "./pages/EditProfilePage";
 
 const PrivateRoute = ({ authenticated }) => {
   return authenticated ? <Outlet /> : <Navigate replace to="/login" />;
@@ -33,6 +34,7 @@ const App = () => {
           <Route path="/homePage/comment/:id" element={<CommentPage/>}/>
           <Route path="/aboutus" element={<AboutUs/>}/>
           <Route path="/contactus" element={<ContactUs/>}/>
+          <Route path="/homepage/edit-Profile" element={<EditProfilePage/>}/>
         </Routes>
     </BrowserRouter>
   );
