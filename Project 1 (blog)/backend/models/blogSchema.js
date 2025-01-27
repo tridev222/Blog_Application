@@ -3,10 +3,10 @@ const Schema = mongoose.Schema;
 
 
 const blogSchema = new Schema({
-  author : {
-    type : Schema.Types.ObjectId,
-    ref : "user",
-    required: true
+  author: {
+    type: Schema.Types.ObjectId,
+    ref: 'user',
+    required: true,
   },
   title: {
     type: String,
@@ -25,20 +25,25 @@ const blogSchema = new Schema({
   },
   createdAt: {
     type: Date,
-    default: Date.now, // Corrected here
+    default: Date.now,
   },
-  likes: { type: Schema.Types.ObjectId, 
-    ref : "user",
+  likes: {
+    type: Schema.Types.ObjectId,
+    ref: 'user',
   },
-
   comments: [
     {
-      type : Schema.Types.ObjectId,
-      ref : "comment",
-      createAt: { type: Date, default: Date.now },
+      text: {
+        type: String,
+        required: true,
+      },
+      createAt: {
+        type: Date,
+        default: Date.now,
+      },
     },
   ],
 });
 
-const Blog = mongoose.model("Blog", blogSchema);
+const Blog = mongoose.model('Blog', blogSchema);
 module.exports = Blog;

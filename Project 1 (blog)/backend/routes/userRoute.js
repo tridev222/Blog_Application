@@ -1,5 +1,5 @@
 const express = require("express");
-const { userRegister, userLogin } = require("../controller/userController");
+const { userRegister, userLogin, userDetail } = require("../controller/userController");
 const { createPost, getAllPost, getPost } = require("../controller/postController");
 const { addComment , deleteComment } = require("../controller/CommentController");
 const router = express.Router();
@@ -10,6 +10,8 @@ const { isAuth } = require("../middleware/isAuth");
 // User routes
 router.post("/register", userRegister);
 router.post("/login", userLogin);
+
+router.get('/getDeatail/:id',userDetail)
 
 router.get("/create/post", getAllPost);
 router.get("/posts/comment/:id", getPost);
