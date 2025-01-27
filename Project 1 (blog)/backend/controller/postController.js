@@ -1,5 +1,6 @@
 const Post = require("../models/blogSchema");
 const Blog =require("../models/blogSchema");
+
 //create a post
 const createPost = async (req,res) => {
   const { title, content , email} = req.body;

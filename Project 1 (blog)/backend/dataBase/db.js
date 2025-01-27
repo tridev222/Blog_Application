@@ -1,14 +1,16 @@
-const mongoose = require('mongoose');
-require('dotenv').config(); // Load environment variables
+const mongoose = require("mongoose");
+require("dotenv").config(); // Load environment variables from .env file
+
+const URL = process.env.MONGO_URL; // Get the URL from the .env file
 
 const connectDB = async () => {
-    try {
-        const dbPassword = process.env.DB_PASSWORD;
-        await mongoose.connect(`mongodb+srv://rishisrmscet:${dbPassword}@cluster0.qncw1.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`);
-        console.log('MongoDB connected successfully');
-    } catch (error) {
-        console.error('Error connecting to MongoDB:', error);
-    }
+  try {
+    const con = await mongoose.connect(URL);
+    console.log("DB Connected Successfully ✅");
+  } catch (e) {
+    console.log(`Authentication to database failed ❗`);
+    process.exit(1);
+  }
 };
 
-module.exports= connectDB;
+module.exports = connectDB;

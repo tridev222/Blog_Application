@@ -24,4 +24,4 @@ ConnectDB();
 app.use("/api/user",router)
 
 
-app.listen(PORT,()=>console.log(`server is running on PORT${PORT}`))
+app.listen(PORT,()=>console.log(`server is running on PORT ${PORT}`))

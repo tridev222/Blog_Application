@@ -2,7 +2,6 @@ const User = require("../models/userSchema");
 const bcrypt = require("bcrypt");
 const jwt = require('jsonwebtoken');
 const generateAccessToken = require("../utils/generateToken");
-const { response } = require("express");
 require('dotenv').config();
 
 // Register new user
@@ -55,7 +54,7 @@ const userLogin = async (req, res) => {
     }
     const accessToken = generateAccessToken.generateAccessToken(User);
 
-     res.status(200).jsonn({
+     res.status(200).json({
       status: "success",
       message: "logged in succesfully",
       data: {

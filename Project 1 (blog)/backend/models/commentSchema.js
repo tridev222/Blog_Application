@@ -9,7 +9,7 @@ const CommentSchema = new mongoose.Schema(
         },
         post : {
             type : mongoose.Schema.Types.ObjectId,
-            ref : 'Post',
+            ref : 'Blog',
             required : true
         },
         description : {
@@ -25,4 +25,3 @@ const CommentSchema = new mongoose.Schema(
         );
 
         module.exports = mongoose.model('Comment', CommentSchema);
-        
